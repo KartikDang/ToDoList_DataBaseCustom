@@ -1,0 +1,88 @@
+<%- include('partials/header'); -%>
+
+<body>
+
+    <header class="p-3 bg-dark text-white" style="background: #A683E3;">
+        
+
+
+
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3  ">
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                
+                <img src="css/logo.png" alt="" height="50px">
+                <span style="color: white; margin-left: 12px;" class="fs-4">To-Do List</span>
+              </a>
+              
+              <ul class="nav nav-pills nav ">
+                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="/newlist" class="nav-link">New List</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Home List</a></li>
+                      <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li> -->
+
+                      <% for(var i=0;i<newListName.length;i++){ %>
+                        <li><a class="dropdown-item" href="/lists/<%=newListName[i]%>"><%=newListName[i]%></a></li>
+                                
+                        <%}%>
+                    </ul>
+                  </li>
+                <!-- <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li> -->
+
+                
+              </ul>
+
+              
+            </header>
+          </div>
+
+
+
+
+
+    </header>
+
+    <br>
+
+    <!-- <img src="" alt="" style="height: 85px;"> -->
+    
+
+
+<div class="" id="heading">
+    <h1>
+        <%=daytoday%>
+    </h1>
+</div>
+
+    <div class="box" >
+        <% for(var i=0;i<newItem.length;i++){ %>
+          <form action="/delete" method="post">
+            <div class="item">
+                <input class="form-check-input" type="checkbox" value="<%=newItem[i]._id%>" name="testName" id="flexCheckDefault testName" autocomplete="off" onchange="this.form.submit()">
+                <input class="form-check-input" type="hidden" value="<%=daytoday%>" name="TitleName" id="flexCheckDefault testName" autocomplete="off" onchange="this.form.submit()">
+                <p>
+                    <%=newItem[i].item%>
+                </p>
+            </div>
+          </form>
+            <%}%>
+
+    </div>
+
+
+    <form action="/" method="POST">
+        <input type="text" name="newpoint" placeholder="New Item" autocomplete="off">
+        <button type="submit" class="sub" name="button" value="<%=daytoday%>">+</button>
+    </form>
+</body>
+
+
+<%- include('partials/footer'); -%>
