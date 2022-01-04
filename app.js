@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser=require("body-parser");
 const request=require("request");
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/TodoList');
+mongoose.connect('mongodb+srv://admin:admin@cluster0.arxac.mongodb.net/todoListDB');
 
 //DATA BASE
 
